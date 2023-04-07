@@ -23,6 +23,18 @@
   font-weight: 700;
 }
 
+.beta {
+  position: absolute;
+  top: -5px;
+  right: -40px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: underline;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
 .mainInfo {
   display: flex;
   flex-direction: column;
