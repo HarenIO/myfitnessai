@@ -2,7 +2,7 @@
 
 ## [Live preview](https://myfitnessai.onrender.com)
 
-**MyFitnessAI** is a simple workout generator app, built in just a few hours. It leverages the GPT-3.5 API to create personalized workouts for users.
+**MyFitnessAI** is a simple workout generator app, built in just a few hours. It utilizes the GPT-3.5 API to create personalized workouts for users.
 
 ## Features
 * Quick and easy AI-generated workout plans based on user preferences.
