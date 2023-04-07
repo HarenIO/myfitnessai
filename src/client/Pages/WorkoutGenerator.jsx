@@ -4,9 +4,9 @@ import Select from 'react-select'
 import selectOptions from '../config/selectOptions'
 import selectStyles from '../config/selectStyles'
 
-function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout, selectedOptions, setSelectedOptions }) {
+function WorkoutGenerator({ setIsLoading, fetchWorkout, setWorkout, selectedOptions, setSelectedOptions }) {
 
-  
+
   const handleClick = async () => {
     setIsLoading(true)
     const workout = await fetchWorkout(selectedOptions)
@@ -33,8 +33,9 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout, selectedOptio
     <div className={styles.container}>
       <div className={styles.intro}>
         <h1 className={styles.title}>Personalized Workout Plan</h1>
-        <p className={styles.description}>Create your custom workout plan tailored to your preferences and goals using our advanced AI technology.</p>
+        <p className={styles.description}>Create your custom workout plan tailored to your preferences and goals using the latest AI technology.</p>
       </div>
+      {/* should create a component for these */}
       <div className={styles.selectArea}>
         <div className={styles.selectCard}>
           <label htmlFor='fitness_level' className={styles.selectLabel}>Fitness level</label>
@@ -77,14 +78,15 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout, selectedOptio
           />
         </div>
         <div className={styles.selectCard}>
-          <label htmlFor='workout_duration' className={styles.selectLabel}>Workout Duration</label>
+          <label htmlFor='target_muscle' className={styles.selectLabel}>Target Muscles</label>
           <Select
             className={styles.select}
-            defaultValue={selectedOptions.workout_duration}
-            placeholder="Medium"
-            name="workout_duration"
-            onChange={handleChange}
-            options={selectOptions.durationOptions}
+            defaultValue={selectedOptions.target_muscle}
+            placeholder="Full body"
+            name="target_muscle"
+            onChange={handleMultiChange}
+            options={selectOptions.targetMuscleOptions}
+            isMulti
             styles={selectStyles}
             isSearchable={false}
           />
@@ -142,15 +144,14 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout, selectedOptio
           />
         </div>
         <div className={styles.selectCard}>
-          <label htmlFor='target_muscle' className={styles.selectLabel}>Target Muscles</label>
+          <label htmlFor='workout_duration' className={styles.selectLabel}>Workout Duration</label>
           <Select
             className={styles.select}
-            defaultValue={selectedOptions.target_muscle}
-            placeholder="Full body"
-            name="target_muscle"
-            onChange={handleMultiChange}
-            options={selectOptions.targetMuscleOptions}
-            isMulti
+            defaultValue={selectedOptions.workout_duration}
+            placeholder="Medium"
+            name="workout_duration"
+            onChange={handleChange}
+            options={selectOptions.durationOptions}
             styles={selectStyles}
             isSearchable={false}
           />

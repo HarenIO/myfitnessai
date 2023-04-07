@@ -8,7 +8,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-  origin: 'https://myfitnessai.onrender.com'
+  origin: ['https://myfitnessai.onrender.com', 'http://localhost:5173']
 }))
 
 app.use('/api', apiRoute)

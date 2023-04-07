@@ -10,6 +10,7 @@ function App() {
   const [loadingMessage, setLoadingMessage] = useState('Creating your workout..')
   const [showGenerator, setShowGenerator] = useState(true)
   const [workout, setWorkout] = useState([])
+
   const [selectedOptions, setSelectedOptions] = useState({
     fitness_level: 'Beginner',
     primary_goal: 'Muscle building',
@@ -32,6 +33,7 @@ function App() {
       throw new Error('Failed to contact API after multiple retries.')
     }
     const result = await fetch('https://myfitnessai-api.onrender.com/api/create', {
+    // const result = await fetch('http://localhost:3000/api/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

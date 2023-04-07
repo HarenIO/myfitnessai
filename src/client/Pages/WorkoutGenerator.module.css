@@ -14,9 +14,11 @@
   height: auto;
   background-image: url(../assets/bottom-background-image.jpg);
   background-size: cover;
+  background-position: center; /* Added this line */
   color: white;
   padding-bottom: 2rem;
 }
+
 
 .intro {
   width: 600px;

@@ -45,7 +45,7 @@ const createWorkout = async (req, res) => {
     })
     const data = await completionRequest.json()
     if (data.error) {
-      res.status(404).json({ error: data.error, location: 'completionRequest' })
+      return res.status(404).json({ error: data.error})
     }
 
     return res.status(200).json({workout: data.choices[0].message.content})

@@ -3,12 +3,14 @@ import styles from './LandingPage.module.css'
 
 function LandingPage() {
 
+  //temp fix, implement useRef instead
   const handleClick = () => {
     window.scrollTo({
       top: document.documentElement.scrollHeight - window.innerHeight,
       behavior: 'smooth',
     });
     }
+
   return (
       <div className={styles.container}>
         <h1 className={styles.header}>MyFitnessAI<span className={styles.beta}>Beta</span></h1>
