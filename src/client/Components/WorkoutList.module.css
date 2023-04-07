@@ -1,0 +1,25 @@
+.workoutList {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 20px;
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  max-height: 95%;
+  overflow-y: scroll;
+}
+
+.workoutList h2 {
+  color: white;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid white;
+}
+
+@media screen and (max-width: 767px) {
+  .workoutList {
+    width: 95%;
+  }
+}

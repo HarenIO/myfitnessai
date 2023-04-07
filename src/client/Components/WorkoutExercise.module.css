@@ -1,0 +1,26 @@
+.exerciseContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 1.2rem;
+}
+
+.exercise {
+  color: white;
+  font-weight: bold;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.reps {
+  color: white;
+  font-weight: normal;
+  word-wrap: break-word;
+  hyphens: auto;
+}
