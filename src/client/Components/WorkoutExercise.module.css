@@ -13,7 +13,7 @@
 
 .exercise {
   color: white;
-  font-weight: bold;
+  font-weight: normal;
   word-wrap: break-word;
   hyphens: auto;
 }
