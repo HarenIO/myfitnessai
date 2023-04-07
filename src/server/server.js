@@ -8,10 +8,10 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'https://myfitnessai.onrender.com'
 }))
 
 app.use('/api', apiRoute)
 
 
-app.listen(5050, () => console.log('Express server running on port 5050'))
+app.listen(3000, () => console.log('Express server running on port 3000'))
