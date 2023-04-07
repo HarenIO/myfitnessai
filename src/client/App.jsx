@@ -16,7 +16,7 @@ function App() {
   }, [isLoading, showGenerator])
 
   const fetchWorkout = async (selectedOptions) => {
-    const result = await fetch('http://https://myfitnessai-api.onrender.com:3000/api/create', {
+    const result = await fetch('https://myfitnessai-api.onrender.com:3000/api/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
