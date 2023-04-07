@@ -23,6 +23,7 @@ const createWorkout = async (req, res) => {
       const errorMessage = error.details[0].message
       return res.status(400).json({ error: errorMessage })
     }
+    console.log(process.env.OPENAI_API_KEY)
     const userMessage = objectToString(value)
     const requestBody = {
       model: 'gpt-3.5-turbo',
@@ -33,6 +34,7 @@ const createWorkout = async (req, res) => {
       max_tokens: 256,
       temperature: 0.45
     }
+    console.log('here')
 
     const completionRequest = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -43,13 +45,14 @@ const createWorkout = async (req, res) => {
       body: JSON.stringify(requestBody)
     })
     const data = await completionRequest.json()
+    console.log('here 2')
     if (data.error) {
       res.status(404).json({ error: data.error })
     }
 
     return res.status(200).json({workout: data.choices[0].message.content})
-  } catch (error) {
-    return res.status(404).json({error: error})
+  } catch (err) {
+    return res.status(404).json({error: err})
   }
 }
 
