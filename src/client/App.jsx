@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 function App() {
 
   const [isLoading, setIsLoading] = useState(false)
+  const [loadingMessage, setLoadingMessage] = useState('Creating your workout..')
   const [showGenerator, setShowGenerator] = useState(true)
   const [workout, setWorkout] = useState([])
 
@@ -15,7 +16,10 @@ function App() {
 
   }, [isLoading, showGenerator])
 
-  const fetchWorkout = async (selectedOptions) => {
+  const fetchWorkout = async (selectedOptions, retries = 3) => {
+    if(retries <= 0){
+      throw new Error('Failed to contact API after multiple retries.')
+    }
     const result = await fetch('https://myfitnessai-api.onrender.com/api/create', {
       method: 'POST',
       headers: {
@@ -26,8 +30,8 @@ function App() {
     const { workout } = await result.json()
     const parsedWorkout = await JSON.parse(workout)
     if (typeof parsedWorkout !== 'object') {
-      console.log('Response not an object. Retrying.')
-      fetchWorkout()
+      setLoadingMessage('Something went wrong. Retrying..')
+      return fetchWorkout(selectedOptions, retries - 1)
     }
     setIsLoading(false)
     setShowGenerator(false)
@@ -38,7 +42,7 @@ function App() {
     return (
       <div>
         <LandingPage />
-        <Loading />
+        <Loading loadingMessage={loadingMessage}/>
       </div>
     )
   }
