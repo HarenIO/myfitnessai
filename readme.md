@@ -1,6 +1,6 @@
 # MyFitnessAI
 
-## [Live preview](https://www.myfitnessai.onrender.com)
+## [Live preview](https://myfitnessai.onrender.com)
 
 **MyFitnessAI** is a simple workout generator app, built in just a few hours. It leverages the GPT-3.5 API to create personalized workouts for users.
 
@@ -18,5 +18,5 @@ The following technologies were used to build MyFitnessAI:
 * **React / Vite**: The frontend library for building the user interface.
 * **Node.js**: The runtime environment for executing server-side JavaScript.
 * **Express**: The backend framework for handling API requests.
-* **Joi**: A validation library for ensuring data integrity.
+* **Joi**: Validation library for ensuring data integrity.
 * **GPT-3.5 Turbo**:  OpenAI's API used to generate the personalized workouts.
