@@ -4,23 +4,9 @@ import Select from 'react-select'
 import selectOptions from '../config/selectOptions'
 import selectStyles from '../config/selectStyles'
 
-function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
-
-  const [selectedOptions, setSelectedOptions] = useState({
-    fitness_level: 'Beginner',
-    primary_goal: 'Muscle building',
-    workout_intensity: 'Moderate',
-    workout_duration: '30-60 minutes',
-    available_equipment: 'Full gym',
-    workout_environment: 'Gym',
-    warmup: 'Yes',
-    cooldown: 'Yes',
-    target_muscle: 'Full body',
-    additional_information: ''
-  })
+function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout, selectedOptions, setSelectedOptions }) {
 
   
-
   const handleClick = async () => {
     setIsLoading(true)
     const workout = await fetchWorkout(selectedOptions)
@@ -39,7 +25,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
     const fieldName = action.name;
     setSelectedOptions((prevState) => ({
       ...prevState,
-      [fieldName]: value.map((item) => item.value),
+      [fieldName]: value.map((item) => item.value).join(', '),
     }));
   }
 

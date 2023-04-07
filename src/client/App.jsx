@@ -10,7 +10,18 @@ function App() {
   const [loadingMessage, setLoadingMessage] = useState('Creating your workout..')
   const [showGenerator, setShowGenerator] = useState(true)
   const [workout, setWorkout] = useState([])
-
+  const [selectedOptions, setSelectedOptions] = useState({
+    fitness_level: 'Beginner',
+    primary_goal: 'Muscle building',
+    workout_intensity: 'Moderate',
+    workout_duration: '30-60 minutes',
+    available_equipment: 'Full gym',
+    workout_environment: 'Gym',
+    warmup: 'Yes',
+    cooldown: 'Yes',
+    target_muscle: 'Full body',
+    additional_information: ''
+  })
 
   useEffect(() => {
 
@@ -49,7 +60,7 @@ function App() {
   return (
     <div>
       <LandingPage />
-      {showGenerator ? <WorkoutGenerator fetchWorkout={fetchWorkout} setIsLoading={setIsLoading} setWorkout={setWorkout} /> : <WorkoutPage workout={workout} />}
+      {showGenerator ? <WorkoutGenerator selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} fetchWorkout={fetchWorkout} setIsLoading={setIsLoading} setWorkout={setWorkout} /> : <WorkoutPage workout={workout} />}
     </div>
   )
 }
