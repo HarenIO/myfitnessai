@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
-dotenv.config({ path: './config/.env' })
+dotenv.config()
+// dotenv.config({ path: './config/.env' })
 import { systemConfig } from '../config/api.js'
 import { createWorkoutSchema } from '../utils/validation.js'
 
@@ -23,7 +24,6 @@ const createWorkout = async (req, res) => {
       return res.status(400).json({ error: errorMessage })
     }
     const userMessage = objectToString(value)
-
     const requestBody = {
       model: 'gpt-3.5-turbo',
       messages: [
@@ -46,10 +46,10 @@ const createWorkout = async (req, res) => {
     if (data.error) {
       res.status(404).json({ error: data.error })
     }
-    console.log(data.choices[0].message.content)
+
     return res.status(200).json({workout: data.choices[0].message.content})
   } catch (error) {
-    console.log(error)
+    return res.status(404).json({error: error})
   }
 }
 
