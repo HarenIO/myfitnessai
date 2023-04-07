@@ -32,7 +32,7 @@ const createWorkout = async (req, res) => {
         { role: 'user', content: userMessage }
       ],
       max_tokens: 256,
-      temperature: 0.45
+      temperature: 0.4
     }
     
     const completionRequest = await fetch('https://api.openai.com/v1/chat/completions', {
