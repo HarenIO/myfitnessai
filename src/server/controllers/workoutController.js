@@ -34,8 +34,7 @@ const createWorkout = async (req, res) => {
       max_tokens: 256,
       temperature: 0.45
     }
-    console.log('here')
-
+    console.log('requestBody', JSON.stringify(requestBody))
     const completionRequest = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -44,10 +43,10 @@ const createWorkout = async (req, res) => {
       },
       body: JSON.stringify(requestBody)
     })
+    console.log('data', data)
     const data = await completionRequest.json()
-    console.log('here 2')
     if (data.error) {
-      res.status(404).json({ error: data.error })
+      res.status(404).json({ error: data.error, location: 'completionRequest' })
     }
 
     return res.status(200).json({workout: data.choices[0].message.content})
