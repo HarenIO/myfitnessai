@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+import fetch from 'node-fetch'
 dotenv.config()
 // dotenv.config({ path: './config/.env' })
 import { systemConfig } from '../config/api.js'
@@ -23,7 +24,6 @@ const createWorkout = async (req, res) => {
       const errorMessage = error.details[0].message
       return res.status(400).json({ error: errorMessage })
     }
-    console.log(process.env.OPENAI_API_KEY)
     const userMessage = objectToString(value)
     const requestBody = {
       model: 'gpt-3.5-turbo',
@@ -34,7 +34,7 @@ const createWorkout = async (req, res) => {
       max_tokens: 256,
       temperature: 0.45
     }
-    console.log('requestBody', JSON.stringify(requestBody))
+    
     const completionRequest = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -43,7 +43,6 @@ const createWorkout = async (req, res) => {
       },
       body: JSON.stringify(requestBody)
     })
-    console.log('data', data)
     const data = await completionRequest.json()
     if (data.error) {
       res.status(404).json({ error: data.error, location: 'completionRequest' })

@@ -60,6 +60,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
             onChange={handleChange}
             options={selectOptions.levelOptions}
             styles={selectStyles}
+            isSearchable={false}
           />
 
         </div>
@@ -73,6 +74,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
             onChange={handleChange}
             options={selectOptions.goalOptions}
             styles={selectStyles}
+            isSearchable={false}
           />
         </div>
         <div className={styles.selectCard}>
@@ -85,6 +87,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
             onChange={handleChange}
             options={selectOptions.intensityOptions}
             styles={selectStyles}
+            isSearchable={false}
           />
         </div>
         <div className={styles.selectCard}>
@@ -97,6 +100,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
             onChange={handleChange}
             options={selectOptions.durationOptions}
             styles={selectStyles}
+            isSearchable={false}
           />
         </div>
         <div className={styles.selectCard}>
@@ -109,6 +113,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
             onChange={handleChange}
             options={selectOptions.equipmentOptions}
             styles={selectStyles}
+            isSearchable={false}
           />
         </div>
         <div className={styles.selectCard}>
@@ -121,6 +126,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
             onChange={handleChange}
             options={selectOptions.environmentOptions}
             styles={selectStyles}
+            isSearchable={false}
           />
         </div>
         <div className={styles.selectCard}>
@@ -133,6 +139,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
             onChange={handleChange}
             options={selectOptions.warmupOptions}
             styles={selectStyles}
+            isSearchable={false}
           />
         </div>
         <div className={styles.selectCard}>
@@ -145,6 +152,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
             onChange={handleChange}
             options={selectOptions.cooldownOptions}
             styles={selectStyles}
+            isSearchable={false}
           />
         </div>
         <div className={styles.selectCard}>
@@ -158,6 +166,7 @@ function WorkoutGenerator({setIsLoading, fetchWorkout, setWorkout }) {
             options={selectOptions.targetMuscleOptions}
             isMulti
             styles={selectStyles}
+            isSearchable={false}
           />
         </div>
         <div className={styles.selectCard}>
