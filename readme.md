@@ -20,3 +20,14 @@ The following technologies were used to build MyFitnessAI:
 * **Express**: The backend framework for handling API requests.
 * **Joi**: Validation library for ensuring data integrity.
 * **GPT-3.5 Turbo**:  OpenAI's API used to generate the personalized workouts.
+
+## Images
+
+### Landing page
+![Landing page](https://i.imgur.com/4CC6EC8.png)
+
+### Workout builder
+![Workout builder](https://i.imgur.com/GS582mj.png)
+
+### Created workout
+![Created workout view](https://i.imgur.com/IporRFd.png)
