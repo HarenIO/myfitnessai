@@ -25,7 +25,9 @@ const createWorkoutSchema = Joi.object({
     'any.only': 'Workout duration should be 15-30 minutes, 30-60 minutes, or 60+ minutes',
     'any.required': 'Workout duration is required'
   }),
-  available_equipment: Joi.string().valid('No equipment', 'Basic home equipment', 'Full gym').required().messages({
+  //Fixa denna sen
+  // available_equipment: Joi.string().valid('No equipment', 'Basic home equipment', 'Full gym', 'Barbell', 'Kettlebells', 'Resistance bands', 'Pull-up bar', 'Treadmill','Stationary bike','Rowing machine', 'Yoga mat','Foam roller','Stability ball', 'Jump rope').required().messages({
+    available_equipment: Joi.string().required().max(150).messages({
     'string.base': 'Available equipment should be a string',
     'string.empty': 'Available equipment is required',
     'any.only': 'Available equipment should be No equipment, Basic home equipment, or Full gym',

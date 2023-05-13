@@ -98,10 +98,11 @@ function WorkoutGenerator({ setIsLoading, fetchWorkout, setWorkout, selectedOpti
             defaultValue={selectedOptions.available_equipment}
             placeholder="Full gym"
             name="available_equipment"
-            onChange={handleChange}
+            onChange={handleMultiChange}
+            isMulti
             options={selectOptions.equipmentOptions}
             styles={selectStyles}
-            isSearchable={false}
+            isSearchable={true}
           />
         </div>
         <div className={styles.selectCard}>

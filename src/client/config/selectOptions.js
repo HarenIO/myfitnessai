@@ -26,10 +26,23 @@ export default {
   ],
 
   equipmentOptions: [
-    { value: 'No equipment', label: 'No equipment' },
-    { value: 'Basic home equipment', label: 'Basic home equipment' },
     { value: 'Full gym', label: 'Full gym' },
+    { value: 'Basic home equipment', label: 'Basic home equipment' },
+    { value: 'No equipment', label: 'No equipment' },
+    { value: 'Dumbbells', label: 'Dumbbells' },
+    { value: 'Barbell', label: 'Barbell' },
+    { value: 'Kettlebells', label: 'Kettlebells' },
+    { value: 'Resistance bands', label: 'Resistance bands' },
+    { value: 'Pull-up bar', label: 'Pull-up bar' },
+    { value: 'Treadmill', label: 'Treadmill' },
+    { value: 'Stationary bike', label: 'Stationary bike' },
+    { value: 'Rowing machine', label: 'Rowing machine' },
+    { value: 'Yoga mat', label: 'Yoga mat' },
+    { value: 'Foam roller', label: 'Foam roller' },
+    { value: 'Stability ball', label: 'Stability ball' },
+    { value: 'Jump rope', label: 'Jump rope' },
   ],
+
 
   environmentOptions: [
     { value: 'Home', label: 'Home' },
@@ -53,6 +66,7 @@ export default {
     { value: 'Lower body', label: 'Lower body' },
     { value: 'Neck', label: 'Neck' },
     { value: 'Chest', label: 'Chest' },
+    { value: 'Shoulder', label: 'Shoulder' },
     { value: 'Back', label: 'Back' },
     { value: 'Legs', label: 'Legs' },
     { value: 'Abs', label: 'Abs' },
