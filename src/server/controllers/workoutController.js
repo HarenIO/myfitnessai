@@ -26,7 +26,7 @@ const createWorkout = async (req, res) => {
     }
     const userMessage = objectToString(value)
     const requestBody = {
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-4-1106-preview',
       messages: [
         systemConfig,
         { role: 'user', content: userMessage }
