@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './WorkoutGenerator.module.css'
 import Select from 'react-select'
 import selectOptions from '../config/selectOptions'
@@ -20,6 +20,17 @@ function WorkoutGenerator({ setIsLoading, fetchWorkout, setWorkout, selectedOpti
       [fieldName]: value.value,
     }));
   };
+
+  const handleAdditionalChange = (event) => {
+    const newValue = event.target.value;
+    setSelectedOptions((prevState) => ({
+      ...prevState,
+      additional_information: newValue,
+    }));
+  }
+  
+  
+  
 
   const handleMultiChange = (value, action) => {
     const fieldName = action.name;
@@ -159,7 +170,7 @@ function WorkoutGenerator({ setIsLoading, fetchWorkout, setWorkout, selectedOpti
         </div>
         <div className={styles.selectCard}>
           <label htmlFor='additional_information' className={styles.selectLabel}>Additional Information</label>
-          <input type="text" name="additional_information" placeholder="Soreness, Injuries..." className={styles.additionalInfo} />
+          <input type="text" name="additional_information" placeholder="Soreness, Injuries..." className={styles.additionalInfo} onChange={handleAdditionalChange}/>
         </div>
       </div>
       <button className={styles.createButton} onClick={handleClick}>Create Workout</button>
