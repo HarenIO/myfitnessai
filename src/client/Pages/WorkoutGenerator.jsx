@@ -7,7 +7,18 @@ import selectStyles from '../config/selectStyles'
 function WorkoutGenerator({ setIsLoading, fetchWorkout, setWorkout, selectedOptions, setSelectedOptions }) {
 
 
+  const [additionalInfoError, setAdditionalInfoError] = React.useState('');
+
+
   const handleClick = async () => {
+    setAdditionalInfoError('');
+
+    if (selectedOptions.additional_information && selectedOptions.additional_information.length > 250) {
+      setAdditionalInfoError('Additional info cannot be more than 250 characters.');
+      setIsLoading(false)
+      return;
+    } 
+
     setIsLoading(true)
     const workout = await fetchWorkout(selectedOptions)
     setWorkout(workout)
@@ -28,9 +39,9 @@ function WorkoutGenerator({ setIsLoading, fetchWorkout, setWorkout, selectedOpti
       additional_information: newValue,
     }));
   }
-  
-  
-  
+
+
+
 
   const handleMultiChange = (value, action) => {
     const fieldName = action.name;
@@ -169,9 +180,24 @@ function WorkoutGenerator({ setIsLoading, fetchWorkout, setWorkout, selectedOpti
           />
         </div>
         <div className={styles.selectCard}>
-          <label htmlFor='additional_information' className={styles.selectLabel}>Additional Information</label>
-          <input type="text" name="additional_information" placeholder="Soreness, Injuries..." className={styles.additionalInfo} onChange={handleAdditionalChange}/>
+          <label htmlFor='additional_information' className={styles.selectLabel}>
+            Additional Information
+            <div className={styles.tooltip}>
+              <span className={styles.questionMark}>?</span>
+              <span className={styles.tooltipText}>Any detail helps - habits, limits, or concerns.</span>
+            </div>
+          </label>
+          <input
+            type="text"
+            name="additional_information"
+            placeholder="Soreness, Injuries..."
+            className={styles.additionalInfo}
+            onChange={handleAdditionalChange}
+          />
+          {additionalInfoError && <p className={styles.error}>{additionalInfoError}</p>}
         </div>
+
+
       </div>
       <button className={styles.createButton} onClick={handleClick}>Create Workout</button>
     </div >
