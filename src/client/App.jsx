@@ -45,7 +45,7 @@ function App() {
       if (!response.ok) {
         if (retries > 0 && (response.status === 400 || response.status >= 500)) {
           console.log('Something went wrong. Retrying..');
-          setLoadingMessage('Something went wrong. Retrying');
+          setLoadingMessage('Something went wrong. Retrying..');
           await new Promise(resolve => setTimeout(resolve, 1000));
           return await fetchWorkout(selectedOptions, retries - 1);
         }
@@ -53,19 +53,20 @@ function App() {
       }
   
       const { workout } = await response.json();
+      const parsedWorkout = JSON.parse(workout);
       setIsLoading(false);
       setShowGenerator(false);
-      return workout;
+      return parsedWorkout;
   
     } catch (error) {
       console.error('There was an error!', error);
       if (retries > 0) {
         console.log(`Retrying`);
-        setLoadingMessage(`Something went wrong. Retrying`);
+        setLoadingMessage(`Something went wrong. Retrying..`);
         return await fetchWorkout(selectedOptions, retries - 1);
       } else {
         console.error(`Failed after multiple retries: ${error}`);
-        setLoadingMessage('Something went wrong. Please try again')
+        setLoadingMessage('Something went wrong. Please try again!')
       }
     }
   };
