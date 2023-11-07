@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 function App() {
 
   const [isLoading, setIsLoading] = useState(false)
-  const [loadingMessage, setLoadingMessage] = useState('Creating your workout..')
+  const [loadingMessage, setLoadingMessage] = useState('Creating your workout')
   const [showGenerator, setShowGenerator] = useState(true)
   const [workout, setWorkout] = useState([])
 
@@ -24,12 +24,16 @@ function App() {
     additional_information: ''
   })
 
+  const handleBackToGenerator = () => {
+    setShowGenerator(true);
+  };
+
   useEffect(() => {
 
   }, [isLoading, showGenerator])
 
   const fetchWorkout = async (selectedOptions, retries = 3) => {
-    if(retries <= 0){
+    if (retries <= 0) {
       throw new Error('Failed to contact API after multiple retries.')
     }
     const result = await fetch('https://myfitnessai-api.onrender.com/api/create', {
@@ -55,14 +59,14 @@ function App() {
     return (
       <div>
         <LandingPage />
-        <Loading loadingMessage={loadingMessage}/>
+        <Loading loadingMessage={loadingMessage} />
       </div>
     )
   }
   return (
     <div>
       <LandingPage />
-      {showGenerator ? <WorkoutGenerator selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} fetchWorkout={fetchWorkout} setIsLoading={setIsLoading} setWorkout={setWorkout} /> : <WorkoutPage workout={workout} />}
+      {showGenerator ? <WorkoutGenerator selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} fetchWorkout={fetchWorkout} setIsLoading={setIsLoading} setWorkout={setWorkout} /> : <WorkoutPage workout={workout} onBackToGenerator={handleBackToGenerator}/>}
     </div>
   )
 }
