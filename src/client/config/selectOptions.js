@@ -6,7 +6,7 @@ export default {
   ],
   goalOptions: [
     { value: 'Weight loss', label: 'Weight loss' },
-    { value: 'Muscle Building', label: 'Muscle Building' },
+    { value: 'Muscle building', label: 'Muscle Building' },
     { value: 'Strength', label: 'Strength' },
     { value: 'Endurance', label: 'Endurance' },
     { value: 'Flexibility', label: 'Flexibility' },
