@@ -33,27 +33,44 @@ function App() {
   }, [isLoading, showGenerator])
 
   const fetchWorkout = async (selectedOptions, retries = 3) => {
-    if (retries <= 0) {
-      throw new Error('Failed to contact API after multiple retries.')
+    try {
+      const response = await fetch('http://localhost:3000/api/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(selectedOptions)
+      });
+  
+      if (!response.ok) {
+        if (retries > 0 && (response.status === 400 || response.status >= 500)) {
+          console.log('Something went wrong. Retrying..');
+          setLoadingMessage('Something went wrong. Retrying');
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          return await fetchWorkout(selectedOptions, retries - 1);
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const { workout } = await response.json();
+      setIsLoading(false);
+      setShowGenerator(false);
+      return workout;
+  
+    } catch (error) {
+      console.error('There was an error!', error);
+      if (retries > 0) {
+        console.log(`Retrying`);
+        setLoadingMessage(`Something went wrong. Retrying`);
+        return await fetchWorkout(selectedOptions, retries - 1);
+      } else {
+        console.error(`Failed after multiple retries: ${error}`);
+        setLoadingMessage('Something went wrong. Please try again')
+      }
     }
-    const result = await fetch('https://myfitnessai-api.onrender.com/api/create', {
-    // const result = await fetch('http://localhost:3000/api/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(selectedOptions)
-    })
-    const { workout } = await result.json()
-    const parsedWorkout = await JSON.parse(workout)
-    if (typeof parsedWorkout !== 'object') {
-      setLoadingMessage('Something went wrong. Retrying..')
-      return fetchWorkout(selectedOptions, retries - 1)
-    }
-    setIsLoading(false)
-    setShowGenerator(false)
-    return parsedWorkout
-  }
+  };
+  
+  
 
   if (isLoading) {
     return (
