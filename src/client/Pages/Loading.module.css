@@ -14,4 +14,26 @@
   background-image: url(../assets/bottom-background-image.jpg);
   background-size: cover;
   color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.loadingTitle {
+  animation: fadeInOut 2s linear infinite;
 }
