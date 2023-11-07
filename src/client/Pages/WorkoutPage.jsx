@@ -8,7 +8,8 @@ function WorkoutPage({ workout, onBackToGenerator }) {
   return (
     <div className={styles.container}>
       <WorkoutList workout={workout} />
-      <button onClick={onBackToGenerator} className={styles.backButton}>Back to Create Workout</button>
+      <h2>Not happy with the workout?</h2>
+      <button onClick={onBackToGenerator} className={styles.backButton}>Create a new one</button>
     </div>
   )
 }
