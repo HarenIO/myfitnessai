@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './Loading.module.css'
 import { SpinningCircles } from 'react-loading-icons'
 
 function Loading({ loadingMessage }) {
 
-  const [dots, setDots] = useState('.');
+  const [showSpinner, setShowSpinner] = React.useState(true)
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDots(dots => dots.length < 3 ? dots + '.' : '.');
-    }, 500);
-
-    return () => clearInterval(interval);
-  }, []);
+  React.useEffect(() => {
+    if(loadingMessage == 'Something went wrong. Please try again!') {
+      setShowSpinner(false)
+    }
+  }, [loadingMessage])
 
   return (
+    
     <div className={styles.container}>
-      <SpinningCircles fill="#FFF" />
-      <h2 className="loadingTitle">{loadingMessage}{dots}</h2>
+      {showSpinner ? <SpinningCircles fill="#FFF" /> : null}
+      <h2 className="loadingTitle">{loadingMessage}</h2>
     </div>
   )
 }
